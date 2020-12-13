@@ -1,5 +1,6 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
 import { Container, Form, Icons } from './styles';
 
 import iconsImg from '../../assets/Icons.svg';
@@ -9,9 +10,19 @@ const SignIn: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = useCallback((e: FormEvent) => {
-    e.preventDefault();
-  }, []);
+  const history = useHistory();
+
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+
+      localStorage.setItem('@psycho:name', name);
+      localStorage.setItem('@psycho:email', email);
+
+      history.push('/questions');
+    },
+    [name, email, history],
+  );
 
   return (
     <Container>

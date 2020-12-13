@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface AnswersContainerProps {
+  responsesSent: boolean;
+}
 
 export const Container = styled.div`
   background: linear-gradient(254.1deg, #014ca5 0.17%, #002051 96.48%);
@@ -74,12 +78,58 @@ export const Header = styled.header`
   }
 `;
 
-export const AnswersContainer = styled.div`
+export const AnswersContainer = styled.div<AnswersContainerProps>`
   width: 100%;
 
   > div:first-of-type {
     margin-top: -10px;
     padding-top: 10px;
     height: 160px;
+  }
+
+  ${props =>
+    props.responsesSent &&
+    css`
+      background: #000;
+      opacity: 60%;
+      pointer-events: none;
+    `}
+
+  p {
+    color: #5c5c5c;
+    font-style: italic;
+  }
+`;
+
+export const Modal = styled.div`
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f0f0f5;
+  color: #000000;
+  border-radius: 8px;
+  height: 100%;
+  max-height: 550px;
+  width: 100%;
+  max-width: 500px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > svg {
+    color: green;
+    width: 30%;
+    height: auto;
+  }
+
+  p {
+    font-size: 24px;
+    margin-top: 20px;
+    font-style: italic;
+    color: #5c5c5c;
   }
 `;
