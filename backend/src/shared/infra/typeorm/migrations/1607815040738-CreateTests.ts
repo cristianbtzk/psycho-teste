@@ -1,11 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateQuestions1607345763604
-  implements MigrationInterface {
+export default class CreateTests1607815040738 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'questions',
+        name: 'tests',
         columns: [
           {
             name: 'id',
@@ -15,17 +14,24 @@ export default class CreateQuestions1607345763604
             generationStrategy: 'increment',
           },
           {
-            name: 'type',
+            name: 'name',
             type: 'string',
             isNullable: false,
           },
           {
-            name: 'html',
+            name: 'email',
             type: 'string',
+            isNullable: false,
           },
           {
-            name: 'answer',
-            type: 'string',
+            name: 'created_at',
+            type: 'datetime',
+            default: 'CURRENT_TIMESTAMP',
+          },
+          {
+            name: 'updated_at',
+            type: 'datetime',
+            default: 'CURRENT_TIMESTAMP',
           },
         ],
       }),
@@ -33,6 +39,6 @@ export default class CreateQuestions1607345763604
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('questions');
+    await queryRunner.dropTable('tests');
   }
 }
