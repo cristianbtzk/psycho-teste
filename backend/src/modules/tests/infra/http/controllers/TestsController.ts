@@ -1,5 +1,5 @@
 import CreateTestService from '@modules/tests/services/CreateTestService';
-// import ListQuestionsService from '@modules/tests/services/ListQuestionsService';
+import ListTestsService from '@modules/tests/services/ListTestsService';
 import { Request, Response } from 'express';
 
 export default class TestsController {
@@ -13,11 +13,13 @@ export default class TestsController {
     return response.json(test);
   }
 
-  /*  async index(request: Request, response: Response): Promise<Response> {
-    const listQuestions = new ListQuestionsService();
+  async index(request: Request, response: Response): Promise<Response> {
+    const { page } = request.params;
 
-    const questions = await listQuestions.execute();
+    const listTests = new ListTestsService();
 
-    return response.json(questions);
-  } */
+    const tests = await listTests.execute(parseInt(page, 10));
+
+    return response.json(tests);
+  }
 }

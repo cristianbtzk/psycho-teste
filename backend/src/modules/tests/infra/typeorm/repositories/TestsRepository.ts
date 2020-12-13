@@ -2,6 +2,11 @@ import ICreateTestsDTO from '@modules/tests/dtos/ICreateTestDTO';
 import { getRepository, Repository } from 'typeorm';
 import Test from '../entities/Test';
 
+interface IFindReponse {
+  tests: Test[];
+  count: number;
+}
+
 class TestsRepository {
   private ormRepository: Repository<Test>;
 
@@ -25,10 +30,17 @@ class TestsRepository {
     return test;
   }
 
-  public async findAll(): Promise<Test[]> {
-    const questions = await this.ormRepository.find();
+  public async findAll(page: number): Promise<IFindReponse> {
+    const skipQuantity = 5 * (page - 1);
 
-    return questions;
+    const [tests, count] = await this.ormRepository.findAndCount({
+      skip: skipQuantity,
+      take: 5,
+      relations: ['answers'],
+      select: ['id', 'name', 'email'],
+    });
+
+    return { tests, count };
   }
 }
 
