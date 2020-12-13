@@ -1,5 +1,5 @@
 interface IAnswer {
-  question: number;
+  number: number;
   answer: string;
   is_correct: boolean;
   time: string;

@@ -18,7 +18,7 @@ export default class CreateAnswers1607815257686 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'question',
+            name: 'number',
             type: 'int',
             isNullable: false,
           },

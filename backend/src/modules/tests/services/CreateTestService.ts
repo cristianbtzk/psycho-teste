@@ -2,7 +2,7 @@ import Test from '../infra/typeorm/entities/Test';
 import TestsRepository from '../infra/typeorm/repositories/TestsRepository';
 
 interface IAnswer {
-  question: number;
+  number: number;
   answer: string;
 }
 
@@ -13,7 +13,7 @@ interface IRequest {
 }
 
 interface IAnswerCorrected {
-  question: number;
+  number: number;
   answer: string;
   is_correct: boolean;
   time: string;
@@ -25,7 +25,7 @@ class CreateQuestionService {
   public async execute({ name, email, answers }: IRequest): Promise<Test> {
     const correctedAnswers = answers.map(answer => {
       let is_correct = false;
-      switch (answer.question) {
+      switch (answer.number) {
         case 1: {
           if (answer.answer === 'a') {
             is_correct = true;

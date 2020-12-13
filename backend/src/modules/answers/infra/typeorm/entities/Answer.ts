@@ -13,7 +13,7 @@ class Answer {
   id: number;
 
   @Column()
-  question: number;
+  number: number;
 
   @Column()
   answer: string;
