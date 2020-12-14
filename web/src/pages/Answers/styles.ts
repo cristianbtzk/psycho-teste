@@ -96,7 +96,7 @@ export const AnswersContainer = styled.div<AnswersContainerProps>`
     `}
 
   p {
-    color: #5c5c5c;
+    color: #fff;
     font-style: italic;
   }
 `;
