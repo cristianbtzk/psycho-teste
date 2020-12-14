@@ -59,7 +59,9 @@ const Question4: React.FC<IQuestionProps> = ({ handleChangeAnswer }) => {
           <RadioInput letter="C" name="option" value="c" id="c">
             13,2
           </RadioInput>
-          <RadioInput letter="D" name="option" value="d" id="d" />
+          <RadioInput letter="D" name="option" value="d" id="d">
+            16,8
+          </RadioInput>
         </OptionsContainer>
       </Content>
     </>

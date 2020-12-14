@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PageButtons from '../../components/PageButtons';
 import RankingElement from '../../components/RankingElement';
 import api from '../../services/api';
@@ -17,6 +18,11 @@ const Ranking: React.FC = () => {
   const [tests, setTests] = useState<Test[]>([]);
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const history = useHistory();
+
+  const handleMenu = useCallback(() => {
+    history.push('/menu');
+  }, [history]);
 
   useEffect(() => {
     api.get(`/tests/${currentPage}`).then(response => {
@@ -32,6 +38,7 @@ const Ranking: React.FC = () => {
       {tests.map(test => (
         <RankingElement
           key={test.id}
+          id={test.id}
           name={test.name}
           time={test.time}
           score={test.score}
@@ -46,7 +53,9 @@ const Ranking: React.FC = () => {
           setCurrentPage={setCurrentPage}
         />
       </PageSelect>
-      <button type="button">Voltar ao menu</button>
+      <button type="button" onClick={handleMenu}>
+        Voltar ao menu
+      </button>
     </Container>
   );
 };

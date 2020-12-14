@@ -1,8 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { FaHome } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import { Container, QuestionsContainer, Header, Footer } from './styles';
+import {
+  Container,
+  QuestionsContainer,
+  Header,
+  Footer,
+  Logout,
+} from './styles';
 
 import iconsImg from '../../assets/Icons.svg';
 import Question from '../../components/QuestionsWordings';
@@ -33,6 +40,11 @@ const Questions: React.FC = () => {
     handleNextQuestion();
   }, [currentQuestion.number, editAnswers, selectedAnswer, handleNextQuestion]);
 
+  const handleLogout = useCallback(() => {
+    localStorage.clear();
+    history.push('/');
+  }, [history]);
+
   return (
     <Container>
       <img src={iconsImg} alt="Ícones" />
@@ -41,7 +53,7 @@ const Questions: React.FC = () => {
           <FaHome />
           <p>Questão {currentQuestion.number}</p>
           <p>Prova: {currentQuestion.type}</p>
-          <p>Tempo: 1m20s</p>
+          <p>Tempo: Tempo restante</p>
         </Header>
         <Question
           setSelectedAnswer={setSelectedAnswer}
@@ -56,6 +68,12 @@ const Questions: React.FC = () => {
           </button>
         </Footer>
       </QuestionsContainer>
+      <Logout>
+        <button type="button" onClick={handleLogout}>
+          Sair
+          <FiLogOut />
+        </button>
+      </Logout>
     </Container>
   );
 };

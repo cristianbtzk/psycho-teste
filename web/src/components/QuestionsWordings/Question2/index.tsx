@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { MathComponent } from 'mathjax-react';
 import { Content, Column } from './styles';
 import IQuestionProps from '../IQuestionProps';
 
@@ -70,16 +71,58 @@ const Question2: React.FC<IQuestionProps> = ({ handleChangeAnswer }) => {
           </p>
           <OptionsContainer handleChangeAnswer={handleChangeAnswer}>
             <RadioInput letter="A" name="option" value="a" id="a">
-              1
+              <MathComponent
+                tex={String.raw`
+          \left[\begin{array}{rrrr}
+            \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+          \end{array}\right]
+        `}
+              />
             </RadioInput>
             <RadioInput letter="B" name="option" value="b" id="b">
-              2
+              <MathComponent
+                tex={String.raw`
+          \left[\begin{array}{rrrr}
+            \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
+          \end{array}\right]
+        `}
+              />
             </RadioInput>
             <RadioInput letter="C" name="option" value="c" id="c">
-              3
+              <MathComponent
+                tex={String.raw`
+          \left[\begin{array}{rrrr}
+            1 \\
+            1 \\
+            1 \\
+            1 \\
+          \end{array}\right]
+        `}
+              />
             </RadioInput>
             <RadioInput letter="D" name="option" value="d" id="d">
-              4
+              <MathComponent
+                tex={String.raw`
+          \left[\begin{array}{rrrr}
+            \frac{1}{2} \\
+            \frac{1}{2} \\
+            \frac{1}{2} \\
+            \frac{1}{2} \\
+          \end{array}\right]
+        `}
+              />
+            </RadioInput>
+            <RadioInput letter="E" name="option" value="e" id="e">
+              <MathComponent
+                tex={String.raw`
+          \left[\begin{array}{rrrr}
+            \frac{1}{4} \\
+            \frac{1}{4} \\
+            \frac{1}{4} \\
+            \frac{1}{4} \\
+          \end{array}\right]
+        `}
+              />
             </RadioInput>
           </OptionsContainer>
         </Column>

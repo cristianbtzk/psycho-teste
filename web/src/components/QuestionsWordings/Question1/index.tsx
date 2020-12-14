@@ -26,10 +26,13 @@ const Question1: React.FC<IQuestionProps> = ({ handleChangeAnswer }) => {
         <Grid>
           <MathComponent
             tex={String.raw`
-          \left[\begin{array}{rrrr}
-            1 & 2 & 4 & 8 \\
-            16 & 32 & 64 & 128 \\
-            256 & 512 & 1024 & 2048
+            A =
+          \left[\begin{array}{rrrrr}
+            0 & 2 & 0 & 2 & 2 \\
+            0 & 0 & 2 & 1 & 0 \\
+            1 & 2 & 0 & 1 & 1 \\
+            0 & 2 & 2 & 0 & 0 \\
+            3 & 0 & 1 & 1 & 0 \\
           \end{array}\right]
         `}
           />

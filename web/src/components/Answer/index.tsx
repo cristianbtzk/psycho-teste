@@ -20,6 +20,7 @@ const Answer: React.FC<AnswerProps> = ({ question }) => {
 
   const handleChangeAnswer = useCallback(() => {
     setQuestion(question.number);
+
     history.push('/questions');
   }, [setQuestion, question.number, history]);
 

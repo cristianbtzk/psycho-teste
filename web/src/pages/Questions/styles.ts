@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: linear-gradient(254.1deg, #014ca5 0.17%, #002051 96.48%);
-  height: 100vh;
-  width: 100vw;
-  overflow-y: scroll;
+  min-height: 100vh;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -18,11 +17,10 @@ export const Container = styled.div`
     z-index: 0;
   }
 `;
-
 export const QuestionsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 90%;
+  min-height: 80vh;
   width: 80%;
   z-index: 1;
   background: #fff;
@@ -71,6 +69,24 @@ export const Footer = styled.div`
       padding: 18px 42px;
       box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
       border-radius: 100px;
+    }
+  }
+`;
+
+export const Logout = styled.div`
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+  align-self: flex-end;
+  button {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    font-size: 24px;
+    color: #fff;
+    > svg {
+      margin-left: 8px;
     }
   }
 `;

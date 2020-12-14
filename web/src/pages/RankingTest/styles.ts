@@ -1,13 +1,9 @@
 import styled, { css } from 'styled-components';
 
-interface AnswersContainerProps {
-  responsesSent: boolean;
-}
-
 export const Container = styled.div`
   background: linear-gradient(254.1deg, #014ca5 0.17%, #002051 96.48%);
   display: flex;
-  min-height: 100%;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
 
@@ -69,7 +65,7 @@ export const Header = styled.header`
   width: 100%;
   text-align: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 
   p {
     color: #5c5c5c;
@@ -77,7 +73,7 @@ export const Header = styled.header`
   }
 `;
 
-export const AnswersContainer = styled.div<AnswersContainerProps>`
+export const AnswersContainer = styled.div`
   width: 100%;
 
   > div:first-of-type {
@@ -85,14 +81,6 @@ export const AnswersContainer = styled.div<AnswersContainerProps>`
     padding-top: 10px;
     height: 160px;
   }
-
-  ${props =>
-    props.responsesSent &&
-    css`
-      background: #000;
-      opacity: 60%;
-      pointer-events: none;
-    `}
 
   p {
     color: #fff;

@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
       localStorage.setItem('@psycho:name', name);
       localStorage.setItem('@psycho:email', email);
 
-      history.push('/questions');
+      history.push('/menu');
     },
     [name, email, history],
   );
