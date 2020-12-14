@@ -23,31 +23,37 @@ class CreateQuestionService {
   constructor(private testsRepository = new TestsRepository()) {}
 
   public async execute({ name, email, answers }: IRequest): Promise<Test> {
+    let score = 0;
+
     const correctedAnswers = answers.map(answer => {
       let is_correct = false;
       switch (answer.number) {
         case 1: {
           if (answer.answer === 'a') {
             is_correct = true;
+            score += 250;
           }
           break;
         }
         case 2: {
-          if (answer.answer === 'b') {
+          if (answer.answer === 'e') {
             is_correct = true;
+            score += 250;
           }
           break;
         }
         case 3: {
-          if (answer.answer === 'c') {
+          if (answer.answer === 'a') {
             is_correct = true;
+            score += 250;
           }
           break;
         }
 
         default: {
-          if (answer.answer === 'd') {
+          if (answer.answer === 'c') {
             is_correct = true;
+            score += 250;
           }
         }
       }
@@ -64,6 +70,7 @@ class CreateQuestionService {
     const test = await this.testsRepository.create({
       name,
       email,
+      score,
       answers: correctedAnswers,
     });
 

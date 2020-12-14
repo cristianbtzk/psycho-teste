@@ -13,6 +13,9 @@ class Test {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
+  @Column('int')
+  score: number;
+
   @Column()
   name: string;
 

@@ -8,6 +8,7 @@ interface IAnswer {
 export default interface ICreateTestDTO {
   name: string;
   email: string;
+  score: number;
 
   answers: IAnswer[];
 }

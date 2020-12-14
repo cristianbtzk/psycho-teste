@@ -14,6 +14,11 @@ export default class CreateTests1607815040738 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
+            name: 'score',
+            type: 'int',
+            isNullable: false,
+          },
+          {
             name: 'name',
             type: 'string',
             isNullable: false,

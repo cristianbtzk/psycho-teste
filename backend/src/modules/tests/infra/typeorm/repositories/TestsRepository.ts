@@ -17,12 +17,14 @@ class TestsRepository {
   public async create({
     email,
     name,
+    score,
     answers,
   }: ICreateTestsDTO): Promise<Test> {
     const test = this.ormRepository.create({
       email,
       name,
       answers,
+      score,
     });
 
     await this.ormRepository.save(test);
@@ -36,8 +38,10 @@ class TestsRepository {
     const [tests, count] = await this.ormRepository.findAndCount({
       skip: skipQuantity,
       take: 5,
-      relations: ['answers'],
-      select: ['id', 'name', 'email'],
+      select: ['id', 'name', 'email', 'score'],
+      order: {
+        score: 'DESC',
+      },
     });
 
     return { tests, count };
